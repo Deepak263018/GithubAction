@@ -49,18 +49,14 @@ jobs:
     needs: build 
   runs-on: ubuntu-latest 
   container:  
-
-      image: veracode/pipeline-scan:latest 
-
-      options: --user root # our normal luser doesn't have privs to write to github directories 
-      steps: 
+   image: veracode/pipeline-scan:latest 
+   options: --user root # our normal luser doesn't have privs to write to github directories 
+  steps: 
       - name: Retrieve artifact 
-
-      uses: actions/download-artifact@v2 
-
-      with: 
-        name: CodePackage
-      - name: Pipeline Scan 
+  uses: actions/download-artifact@v2 
+  with: 
+    name: CodePackage
+  - name: Pipeline Scan 
 
       run: | 
 
